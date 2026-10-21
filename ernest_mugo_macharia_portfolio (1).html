@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ernest Mugo Macharia | Land Surveyor & RPL Drone Pilot</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        geo: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            500: '#10b981',
+                            600: '#059669',
+                            800: '#065f46',
+                            900: '#022c22',
+                        },
+                        techNavy: {
+                            800: '#0b132b',
+                            900: '#070a13',
+                            950: '#03050a'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Fira Code', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font Inter & JetBrains Mono -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Custom scrollbar and backdrop visual styles */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #070a13;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #059669;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #10b981;
+        }
+        .grid-pattern {
+            background-image: radial-gradient(rgba(16, 185, 129, 0.12) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .glass-panel {
+            background: rgba(11, 19, 43, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(16, 185, 129, 0.15);
+        }
+        .light .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(5, 150, 105, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-techNavy-950 text-slate-100 font-sans transition-colors duration-300 selection:bg-geo-500 selection:text-techNavy-950 grid-pattern">
+
+    <!-- Top Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-emerald-500/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand Logo -->
+                <a href="#hero" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-techNavy-950 shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform">
+                        <i class="fa-solid me-0 fa-compass-drafting text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-lg font-bold tracking-tight block text-white dark:text-white dark-toggle-text">E. M. MACHARIA</span>
+                        <span class="text-xs text-emerald-400 font-mono tracking-wider uppercase block -mt-1">Land Surveyor & Drone Pilot</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#about" class="text-sm font-medium text-slate-300 hover:text-emerald-400 transition-colors"><i class="fa-solid fa-user-gear text-xs text-emerald-400/70 mr-1"></i>About</a>
+                    <a href="#skills" class="text-sm font-medium text-slate-300 hover:text-emerald-400 transition-colors"><i class="fa-solid fa-microchip text-xs text-emerald-400/70 mr-1"></i>Skills</a>
+                    <a href="#projects" class="text-sm font-medium text-slate-300 hover:text-emerald-400 transition-colors"><i class="fa-solid fa-map-location-dot text-xs text-emerald-400/70 mr-1"></i>Projects</a>
+                    <a href="#demo" class="text-sm font-medium text-slate-300 hover:text-emerald-400 transition-colors"><i class="fa-solid fa-code text-xs text-emerald-400/70 mr-1"></i>Field Scripting</a>
+                    <a href="#credentials" class="text-sm font-medium text-slate-300 hover:text-emerald-400 transition-colors"><i class="fa-solid fa-award text-xs text-emerald-400/70 mr-1"></i>Education</a>
+                    <a href="#contact" class="text-sm font-medium text-slate-300 hover:text-emerald-400 transition-colors"><i class="fa-solid fa-envelope text-xs text-emerald-400/70 mr-1"></i>Contact</a>
+                </div>
+
+                <!-- Action Controls -->
+                <div class="flex items-center space-x-3">
+                    <!-- Resume Button -->
+                    <button onclick="openResumeModal()" class="px-3 py-1.5 text-xs font-semibold rounded-md border border-emerald-500/40 text-emerald-300 hover:bg-emerald-500/10 transition-all flex items-center gap-1.5">
+                        <i class="fa-solid fa-file-pdf"></i>
+                        <span class="hidden sm:inline">View Resume</span>
+                    </button>
+
+                    <!-- Theme Toggle Button -->
+                    <button id="themeToggle" onclick="toggleTheme()" class="p-2 rounded-lg bg-slate-800/80 text-emerald-400 border border-emerald-500/20 hover:border-emerald-400 transition-all">
+                        <i id="themeIcon" class="fa-solid fa-moon"></i>
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-emerald-500/20 bg-techNavy-900/95 px-4 pt-2 pb-4 space-y-2">
+            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-emerald-400"><i class="fa-solid fa-user-gear mr-2 text-emerald-400"></i>About</a>
+            <a href="#skills" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-emerald-400"><i class="fa-solid fa-microchip mr-2 text-emerald-400"></i>Skills</a>
+            <a href="#projects" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-emerald-400"><i class="fa-solid fa-map-location-dot mr-2 text-emerald-400"></i>Projects</a>
+            <a href="#demo" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-emerald-400"><i class="fa-solid fa-code mr-2 text-emerald-400"></i>Field Scripting</a>
+            <a href="#credentials" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-emerald-400"><i class="fa-solid fa-award mr-2 text-emerald-400"></i>Education</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-emerald-400"><i class="fa-solid fa-envelope mr-2 text-emerald-400"></i>Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden flex items-center min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-7 space-y-6 text-left">
+                    <!-- Status Badge -->
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-medium">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span>RPL CERTIFIED DRONE PILOT & LAND SURVEYOR</span>
+                    </div>
+
+                    <!-- Main Headline -->
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                        Precision Mapping, <br>
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">
+                            Aerial Intelligence & Geospatial Analytics
+                        </span>
+                    </h1>
+
+                    <!-- Professional Tagline -->
+                    <p class="text-lg text-slate-300 max-w-2xl font-normal leading-relaxed">
+                        Hello, I'm <strong class="text-white">Ernest Mugo Macharia</strong>. I bridge traditional land surveying with cutting-edge UAV aerial photogrammetry, RTK GNSS field operations, and automated spatial data analytics.
+                    </p>
+
+                    <!-- Key Badges -->
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-3 py-1 rounded bg-slate-800/80 border border-slate-700/60 text-slate-300 text-xs font-mono"><i class="fa-solid fa-certificate text-emerald-400 mr-1.5"></i>RPL License (Drone Space Kenya)</span>
+                        <span class="px-3 py-1 rounded bg-slate-800/80 border border-slate-700/60 text-slate-300 text-xs font-mono"><i class="fa-solid fa-graduation-cap text-emerald-400 mr-1.5"></i>RCMRD Diploma</span>
+                        <span class="px-3 py-1 rounded bg-slate-800/80 border border-slate-700/60 text-slate-300 text-xs font-mono"><i class="fa-brands fa-python text-emerald-400 mr-1.5"></i>Python Spatial Scripts</span>
+                    </div>
+
+                    <!-- Call To Action Buttons -->
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <a href="#projects" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-techNavy-950 font-bold hover:shadow-lg hover:shadow-emerald-500/25 transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
+                            <i class="fa-solid fa-layer-group"></i> Explore Projects
+                        </a>
+                        <a href="#contact" class="px-6 py-3.5 rounded-xl bg-slate-800/90 text-white font-semibold border border-slate-700 hover:border-emerald-500/50 hover:bg-slate-800 transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-paper-plane text-emerald-400"></i> Get In Touch
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Visual: Interactive High-Tech Radar Box -->
+                <div class="lg:col-span-5">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <!-- Glow Background -->
+                        <div class="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-2xl blur-lg opacity-25"></div>
+                        
+                        <div class="relative glass-panel rounded-2xl p-6 border border-emerald-500/30">
+                            <!-- Header Bar -->
+                            <div class="flex items-center justify-between pb-4 border-b border-slate-700/60 mb-6">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+                                    <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
+                                    <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+                                </div>
+                                <span class="text-xs font-mono text-emerald-400 font-semibold uppercase tracking-wider"><i class="fa-solid fa-satellite mr-1"></i>GNSS / UAV Operational Feed</span>
+                            </div>
+
+                            <!-- Interactive Field Metrics Grid -->
+                            <div class="grid grid-cols-2 gap-4 mb-6">
+                                <div class="bg-techNavy-900/90 p-4 rounded-xl border border-emerald-500/20">
+                                    <div class="text-xs text-slate-400 font-mono flex items-center gap-1.5">
+                                        <i class="fa-solid fa-crosshairs text-emerald-400"></i> RTK Precision
+                                    </div>
+                                    <div class="text-2xl font-bold text-white mt-1">±8 mm</div>
+                                    <div class="text-[10px] text-emerald-400 font-mono mt-0.5">Horizontal Fixed</div>
+                                </div>
+
+                                <div class="bg-techNavy-900/90 p-4 rounded-xl border border-emerald-500/20">
+                                    <div class="text-xs text-slate-400 font-mono flex items-center gap-1.5">
+                                        <i class="fa-solid fa-drone text-teal-400"></i> Aerial Mapping
+                                    </div>
+                                    <div class="text-2xl font-bold text-white mt-1">DJI / CHC</div>
+                                    <div class="text-[10px] text-teal-400 font-mono mt-0.5">RPL Certified</div>
+                                </div>
+
+                                <div class="bg-techNavy-900/90 p-4 rounded-xl border border-emerald-500/20">
+                                    <div class="text-xs text-slate-400 font-mono flex items-center gap-1.5">
+                                        <i class="fa-solid fa-globe text-cyan-400"></i> Coordinate Systems
+                                    </div>
+                                    <div class="text-2xl font-bold text-white mt-1">UTM / Arc1960</div>
+                                    <div class="text-[10px] text-cyan-400 font-mono mt-0.5">Kenya Zones 36N/37N</div>
+                                </div>
+
+                                <div class="bg-techNavy-900/90 p-4 rounded-xl border border-emerald-500/20">
+                                    <div class="text-xs text-slate-400 font-mono flex items-center gap-1.5">
+                                        <i class="fa-solid fa-code text-emerald-400"></i> Data Automation
+                                    </div>
+                                    <div class="text-2xl font-bold text-white mt-1">Python</div>
+                                    <div class="text-[10px] text-emerald-400 font-mono mt-0.5">CSV/Excel Processing</div>
+                                </div>
+                            </div>
+
+                            <!-- Drone & Survey Equipment Visual Feed Preview -->
+                            <div class="bg-techNavy-900/80 rounded-xl p-4 border border-slate-700/60 relative overflow-hidden">
+                                <div class="flex items-center justify-between text-xs font-mono text-slate-300 mb-2">
+                                    <span><i class="fa-solid fa-satellite-dish text-emerald-400 mr-1"></i>Active Hardware</span>
+                                    <span class="text-emerald-400 font-bold">READY</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs text-slate-400 pt-1 border-t border-slate-800">
+                                    <span>• CHCNAV i73 / i83 RTK</span>
+                                    <span>• FOIF RTS Total Station</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs text-slate-400 pt-1">
+                                    <span>• DJI Matrice Enterprise</span>
+                                    <span>• CHCNAV X500 VTOL</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-20 relative border-t border-slate-800 bg-techNavy-900/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono uppercase tracking-widest text-emerald-400 mb-2 font-bold"><i class="fa-solid fa-compass mr-1.5"></i> Professional Overview</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-white">Combining Field Craftsmanship with Aerial Innovation</h3>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Bio Card -->
+                <div class="lg:col-span-2 glass-panel p-8 rounded-2xl border border-emerald-500/20 flex flex-col justify-between">
+                    <div class="space-y-4 text-slate-300 leading-relaxed text-base">
+                        <p>
+                            I am <strong class="text-white">Ernest Mugo Macharia</strong>, a dedicated Land Surveyor and Remote Pilot License (RPL) holder certified by <strong>Drone Space Kenya</strong>, with solid academic grounding from the <strong>Regional Centre for Mapping of Resources for Development (RCMRD)</strong>.
+                        </p>
+                        <p>
+                            My expertise spans the complete geospatial lifecycle: from setting up millimeter-accurate RTK GNSS baselines in complex terrain, to deploying UAVs for high-resolution aerial mapping, DEM/DSM generation, and point cloud photogrammetry.
+                        </p>
+                        <p>
+                            Additionally, I bring modern data capabilities into traditional surveying—writing customized <strong>Python scripts</strong> to clean, transform, and automate large coordinate dataset pipelines between field collectors (SurPad/LandStar), GIS software (ArcGIS Pro, QGIS), and CAD platforms (AutoCAD Civil 3D).
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-6 mt-6 border-t border-slate-800">
+                        <div class="p-3 bg-techNavy-950/60 rounded-xl border border-slate-800">
+                            <i class="fa-solid fa-ruler-combined text-emerald-400 text-lg mb-1"></i>
+                            <div class="text-xs text-slate-400 font-mono">Cadastral & Boundary</div>
+                            <div class="text-sm font-bold text-white">Demarcation</div>
+                        </div>
+                        <div class="p-3 bg-techNavy-950/60 rounded-xl border border-slate-800">
+                            <i class="fa-solid fa-drone text-teal-400 text-lg mb-1"></i>
+                            <div class="text-xs text-slate-400 font-mono">UAV Mapping</div>
+                            <div class="text-sm font-bold text-white">Orthomosaic / DEM</div>
+                        </div>
+                        <div class="p-3 bg-techNavy-950/60 rounded-xl border border-slate-800 col-span-2 sm:col-span-1">
+                            <i class="fa-solid fa-file-code text-cyan-400 text-lg mb-1"></i>
+                            <div class="text-xs text-slate-400 font-mono">Script Automation</div>
+                            <div class="text-sm font-bold text-white">Python / GIS</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Competencies Summary Box -->
+                <div class="glass-panel p-8 rounded-2xl border border-emerald-500/20 flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-bullseye text-emerald-400"></i> Core Focus Areas
+                        </h4>
+                        <ul class="space-y-3.5 text-sm text-slate-300">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
+                                <span><strong>High-Precision Topography:</strong> Pipeline corridors, road alignment, contours & earthwork volumetric calculations.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
+                                <span><strong>Aerial Photogrammetry:</strong> Flight pre-planning, Ground Control Point (GCP) layout, and Point Cloud generation.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
+                                <span><strong>Riparian & Boundary Surveys:</strong> Beacon re-establishment, public land registration & community land mapping.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
+                                <span><strong>Geospatial Scripting:</strong> Converting coordinate reference systems (CRS) & processing CSV/Excel automation.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-slate-800 text-center">
+                        <span class="text-xs font-mono text-emerald-400 font-semibold"><i class="fa-solid fa-shield-halved mr-1"></i>Compliant with KCAA UAV Regulations</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Skills & Technical Expertise -->
+    <section id="skills" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono uppercase tracking-widest text-emerald-400 mb-2 font-bold"><i class="fa-solid fa-microchip mr-1.5"></i> Technical Stack</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-white">Hardware, Software & Field Automation</h3>
+            </div>
+
+            <!-- Category Tabs / Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Skill Category 1: Hardware -->
+                <div class="glass-panel rounded-2xl p-6 border border-emerald-500/20 hover:border-emerald-500/40 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-satellite-dish"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">Survey Hardware & Drones</h4>
+                    <p class="text-xs text-slate-400 mb-6 font-mono">Field deployment, calibration & RTK GNSS setup</p>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-semibold text-slate-200">RTK GNSS Receivers (CHCNAV, FOIF)</span>
+                                <span class="text-emerald-400 font-mono text-xs">95%</span>
+                            </div>
+                            <div class="w-full bg-slate-800 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-emerald-500 to-teal-400 h-2 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-semibold text-slate-200">Total Stations (FOIF RTS, Leica)</span>
+                                <span class="text-emerald-400 font-mono text-xs">90%</span>
+                            </div>
+                            <div class="w-full bg-slate-800 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-emerald-500 to-teal-400 h-2 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-semibold text-slate-200">Mapping Drones (DJI Matrice, CHCNAV X500)</span>
+                                <span class="text-emerald-400 font-mono text-xs">92%</span>
+                            </div>
+                            <div class="w-full bg-slate-800 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-emerald-500 to-teal-400 h-2 rounded-full" style="width: 92%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-semibold text-slate-200">Handheld Controllers & Antenna Setup</span>
+                                <span class="text-emerald-400 font-mono text-xs">95%</span>
+                            </div>
+                            <div class="w-full bg-slate-800 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-emerald-500 to-teal-400 h-2 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Category 2: Software -->
+                <div class="glass-panel rounded-2xl p-6 border border-emerald-500/20 hover:border-emerald-500/40 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-teal-500/10 text-teal-400 flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">GIS & CAD Software</h4>
+                    <p class="text-xs text-slate-400 mb-6 font-mono">Processing, modeling, photogrammetry & plotting</p>
+
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-semibold text-slate-200">AutoCAD Civil 3D</span>
+                                <span class="text-teal-400 font-mono text-xs">90%</span>
+                            </div>
+                            <div class="w-full bg-slate-800 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-teal-500 to-cyan-400 h-2 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-semibold text-slate-200">ArcGIS Pro & QGIS</span>
+                                <span class="text-teal-400 font-mono text-xs">88%</span>
+                            </div>
+                            <div class="w-full bg-slate-800 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-teal-500 to-cyan-400 h-2 rounded-full" style="width: 88%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-semibold text-slate-200">SurPad & Field Software</span>
+                                <span class="text-teal-400 font-mono text-xs">95%</span>
+                            </div>
+                            <div class="w-full bg-slate-800 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-teal-500 to-cyan-400 h-2 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-semibold text-slate-200">CHCNAV CoPre Photogrammetry</span>
+                                <span class="text-teal-400 font-mono text-xs">85%</span>
+                            </div>
+                            <div class="w-full bg-slate-800 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-teal-500 to-cyan-400 h-2 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Category 3: Data & Programming -->
+                <div class="glass-panel rounded-2xl p-6 border border-emerald-500/20 hover:border-emerald-500/40 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">Data & Scripting</h4>
+                    <p class="text-xs text-slate-400 mb-6 font-mono">Automated processing & coordinate math</p>
+
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-semibold text-slate-200">Python (Pandas, GeoPandas, Math)</span>
+                                <span class="text-cyan-400 font-mono text-xs">85%</span>
+                            </div>
+                            <div class="w-full bg-slate-800 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-cyan-500 to-blue-400 h-2 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-semibold text-slate-200">CSV & Excel Field Batch Automation</span>
+                                <span class="text-cyan-400 font-mono text-xs">92%</span>
+                            </div>
+                            <div class="w-full bg-slate-800 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-cyan-500 to-blue-400 h-2 rounded-full" style="width: 92%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-semibold text-slate-200">Topographic & Riparian Analysis</span>
+                                <span class="text-cyan-400 font-mono text-xs">90%</span>
+                            </div>
+                            <div class="w-full bg-slate-800 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-cyan-500 to-blue-400 h-2 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-semibold text-slate-200">Coordinate Reference Transformations</span>
+                                <span class="text-cyan-400 font-mono text-xs">95%</span>
+                            </div>
+                            <div class="w-full bg-slate-800 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-cyan-500 to-blue-400 h-2 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Projects & Field Experience Section -->
+    <section id="projects" class="py-20 relative border-t border-slate-800 bg-techNavy-900/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-mono uppercase tracking-widest text-emerald-400 mb-2 font-bold"><i class="fa-solid fa-folder-open mr-1.5"></i> Field Portfolio</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-white">Featured Projects & Operations</h3>
+                <p class="text-slate-400 text-sm mt-2">Filter by domain or click a project card for detailed specifications.</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-2 mb-10" id="projectFilters">
+                <button onclick="filterProjects('all')" class="project-filter-btn px-4 py-2 rounded-lg text-xs font-mono font-semibold bg-emerald-500 text-techNavy-950 transition-all" data-filter="all">All Projects</button>
+                <button onclick="filterProjects('drone')" class="project-filter-btn px-4 py-2 rounded-lg text-xs font-mono font-semibold bg-slate-800 text-slate-300 hover:text-white transition-all" data-filter="drone">UAV & Photogrammetry</button>
+                <button onclick="filterProjects('cadastral')" class="project-filter-btn px-4 py-2 rounded-lg text-xs font-mono font-semibold bg-slate-800 text-slate-300 hover:text-white transition-all" data-filter="cadastral">Boundary & Cadastral</button>
+                <button onclick="filterProjects('automation')" class="project-filter-btn px-4 py-2 rounded-lg text-xs font-mono font-semibold bg-slate-800 text-slate-300 hover:text-white transition-all" data-filter="automation">Python & Data</button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8" id="projectsContainer">
+                
+                <!-- Project 1: Drone Mapping -->
+                <div class="project-card glass-panel rounded-2xl overflow-hidden border border-emerald-500/20 hover:border-emerald-500/50 transition-all flex flex-col justify-between" data-category="drone">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-xs font-mono"><i class="fa-solid fa-drone mr-1"></i> UAV & Corridor</span>
+                            <span class="text-xs text-slate-400 font-mono">RTK Static GNSS</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">Pipeline & Road Corridor Topographical Survey</h4>
+                        <p class="text-slate-300 text-sm mb-4 leading-relaxed">
+                            Executed end-to-end aerial topographical mapping over extensive infrastructure corridor. Deployed RTK GNSS baselines, synchronized Ground Control Points (GCPs), and generated 3D DEM models for engineering alignment design.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">CHCNAV X500</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">CHCNAV CoPre</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">AutoCAD Civil 3D</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">GCP Layout</span>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-slate-800/80 mt-auto flex items-center justify-between">
+                        <span class="text-xs text-emerald-400 font-mono"><i class="fa-solid fa-check-circle mr-1"></i>Accuracy: ±15mm Vertical</span>
+                        <button onclick="openProjectModal('pipeline')" class="text-xs font-semibold text-white hover:text-emerald-400 transition-colors flex items-center gap-1">Details <i class="fa-solid fa-arrow-right text-xs"></i></button>
+                    </div>
+                </div>
+
+                <!-- Project 2: Riparian & Boundary -->
+                <div class="project-card glass-panel rounded-2xl overflow-hidden border border-emerald-500/20 hover:border-emerald-500/50 transition-all flex flex-col justify-between" data-category="cadastral">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 rounded bg-teal-500/10 text-teal-400 border border-teal-500/30 text-xs font-mono"><i class="fa-solid fa-map-pin mr-1"></i> Cadastral</span>
+                            <span class="text-xs text-slate-400 font-mono font-normal">Legal Boundary</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">Boundary Demarcation & Riparian Reserve Beaconing</h4>
+                        <p class="text-slate-300 text-sm mb-4 leading-relaxed">
+                            Conducted precision perimeter boundary surveys and high-water mark riparian reserve delineation. Established permanent concrete beacons adhering strictly to national survey regulations and deed plan specifications.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">FOIF RTS Total Station</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">SurPad 4.2</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">ArcGIS Pro</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Deed Plans</span>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-slate-800/80 mt-auto flex items-center justify-between">
+                        <span class="text-xs text-teal-400 font-mono"><i class="fa-solid fa-shield-check mr-1"></i>Regulated Riparian Buffers</span>
+                        <button onclick="openProjectModal('boundary')" class="text-xs font-semibold text-white hover:text-teal-400 transition-colors flex items-center gap-1">Details <i class="fa-solid fa-arrow-right text-xs"></i></button>
+                    </div>
+                </div>
+
+                <!-- Project 3: Python Spatial Automation -->
+                <div class="project-card glass-panel rounded-2xl overflow-hidden border border-emerald-500/20 hover:border-emerald-500/50 transition-all flex flex-col justify-between" data-category="automation">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-xs font-mono"><i class="fa-brands fa-python mr-1"></i> Automation</span>
+                            <span class="text-xs text-slate-400 font-mono font-normal">Python & CSV</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">Automated Spatial Data & Coordinate Processing Engine</h4>
+                        <p class="text-slate-300 text-sm mb-4 leading-relaxed">
+                            Developed lightweight, standalone Python scripts to automate raw GNSS raw coordinate cleaning, formatting CSV logs from field controllers into Civil 3D point group syntax, and detecting coordinate anomaly errors.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Python 3</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Pandas / Math</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">UTM Arc1960</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">CSV Parsing</span>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-slate-800/80 mt-auto flex items-center justify-between">
+                        <span class="text-xs text-cyan-400 font-mono"><i class="fa-solid fa-bolt mr-1"></i>80% Faster Processing</span>
+                        <button onclick="openProjectModal('automation')" class="text-xs font-semibold text-white hover:text-cyan-400 transition-colors flex items-center gap-1">Details <i class="fa-solid fa-arrow-right text-xs"></i></button>
+                    </div>
+                </div>
+
+                <!-- Project 4: Community Land Registration -->
+                <div class="project-card glass-panel rounded-2xl overflow-hidden border border-emerald-500/20 hover:border-emerald-500/50 transition-all flex flex-col justify-between" data-category="cadastral">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 text-xs font-mono"><i class="fa-solid fa-people-roof mr-1"></i> Community Survey</span>
+                            <span class="text-xs text-slate-400 font-mono">Preplanning & Mapping</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">Community Land Registration & Field Preplanning</h4>
+                        <p class="text-slate-300 text-sm mb-4 leading-relaxed">
+                            Organized and executed pre-survey reconnaissance, stakeholder perimeter consensus verification, and field mapping operations for communal land tenure documentation and registration workflows.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">QGIS</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">RTK Base/Rover</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Land tenure</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Reconnaissance</span>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-slate-800/80 mt-auto flex items-center justify-between">
+                        <span class="text-xs text-amber-400 font-mono"><i class="fa-solid fa-handshake mr-1"></i>Community Consensus</span>
+                        <button onclick="openProjectModal('community')" class="text-xs font-semibold text-white hover:text-amber-400 transition-colors flex items-center gap-1">Details <i class="fa-solid fa-arrow-right text-xs"></i></button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Live Demo: Field Coordinate Processing Engine -->
+    <section id="demo" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-panel p-8 rounded-3xl border border-emerald-500/30">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <div class="lg:col-span-5 space-y-4">
+                        <span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-xs font-mono font-semibold">
+                            <i class="fa-solid fa-terminal mr-1"></i> Python Field Script Demo
+                        </span>
+                        <h3 class="text-2xl md:text-3xl font-extrabold text-white">Live Coordinate Data Processing Utility</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Try this simulation of one of my custom Python utility scripts. It parses sample raw WGS84 coordinates collected from field receivers, validates precision levels, and converts them into formatted UTM projected coordinate string outputs ready for AutoCAD / Civil 3D import.
+                        </p>
+
+                        <div class="bg-techNavy-950 p-4 rounded-xl border border-slate-800 font-mono text-xs text-slate-300 space-y-2">
+                            <div class="text-emerald-400">// Sample Python Logic Snippet:</div>
+                            <div class="text-slate-400">def parse_gnss_point(pt_id, lat, lon, elev, h_acc):</div>
+                            <div class="pl-4 text-slate-300">easting, northing = latlon_to_utm_zone37s(lat, lon)</div>
+                            <div class="pl-4 text-slate-300">status = "FIXED" if h_acc <= 0.015 else "FLOAT"</div>
+                            <div class="pl-4 text-slate-300">return f"{pt_id},{easting:.3f},{northing:.3f},{elev:.3f},{status}"</div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Converter Sandbox -->
+                    <div class="lg:col-span-7 bg-techNavy-950 p-6 rounded-2xl border border-emerald-500/20">
+                        <div class="flex items-center justify-between pb-3 border-b border-slate-800 mb-4">
+                            <span class="text-xs font-mono text-slate-300 flex items-center gap-2">
+                                <i class="fa-solid fa-sliders text-emerald-400"></i> Field Data Converter Sandbox
+                            </span>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400">EPSG:32737 (UTM 37S)</span>
+                        </div>
+
+                        <!-- Inputs -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-xs font-mono text-slate-400 mb-1">Point ID</label>
+                                <input type="text" id="demoPtId" value="BM-01" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-400">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-mono text-slate-400 mb-1">Latitude (WGS84 Deg)</label>
+                                <input type="number" step="0.000001" id="demoLat" value="-1.286389" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-400">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-mono text-slate-400 mb-1">Longitude (WGS84 Deg)</label>
+                                <input type="number" step="0.000001" id="demoLon" value="36.817222" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-400">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-mono text-slate-400 mb-1">Ellipsoid Elevation (m)</label>
+                                <input type="number" step="0.001" id="demoElev" value="1680.450" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-400">
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3 mb-6">
+                            <button onclick="runCoordinateProcessing()" class="w-full py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-techNavy-950 font-bold text-sm transition-all flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-play text-xs"></i> Execute Script Processing
+                            </button>
+                        </div>
+
+                        <!-- Terminal Output -->
+                        <div class="bg-black/80 rounded-xl p-4 font-mono text-xs text-emerald-400 border border-emerald-500/30 overflow-x-auto min-h-[110px]" id="terminalOutput">
+                            <span class="text-slate-500">// Output will be displayed here in CAD Point format [Point#, Easting, Northing, Elevation, Code]...</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications & Education Section -->
+    <section id="credentials" class="py-20 relative border-t border-slate-800 bg-techNavy-900/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono uppercase tracking-widest text-emerald-400 mb-2 font-bold"><i class="fa-solid fa-award mr-1.5"></i> Academic & Professional Licenses</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-white">Certifications & Education</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- RPL Drone Space Kenya -->
+                <div class="glass-panel p-8 rounded-2xl border border-emerald-500/20 relative overflow-hidden group hover:border-emerald-500/40 transition-all">
+                    <div class="absolute top-0 right-0 p-6 text-emerald-500/10 group-hover:text-emerald-500/20 transition-colors">
+                        <i class="fa-solid fa-drone text-8xl"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-xs font-mono mb-4">
+                            <i class="fa-solid fa-certificate"></i> Official Certification
+                        </div>
+                        <h4 class="text-2xl font-bold text-white mb-1">Remote Pilot License (RPL)</h4>
+                        <div class="text-emerald-400 font-semibold mb-4 text-base">Drone Space Kenya</div>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Fully licensed UAV pilot certified for commercial drone operations in Kenya under KCAA guidelines. Qualified in flight preplanning, airmanship, emergency protocols, weather analysis, and drone spatial payload execution.
+                        </p>
+                        <div class="flex items-center gap-4 text-xs font-mono text-slate-400 border-t border-slate-800 pt-4">
+                            <span><i class="fa-solid fa-check text-emerald-400 mr-1"></i> Multirotor & Fixed Wing</span>
+                            <span><i class="fa-solid fa-plane-shield text-emerald-400 mr-1"></i> Airspace Regulations</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diploma RCMRD -->
+                <div class="glass-panel p-8 rounded-2xl border border-emerald-500/20 relative overflow-hidden group hover:border-emerald-500/40 transition-all">
+                    <div class="absolute top-0 right-0 p-6 text-teal-500/10 group-hover:text-teal-500/20 transition-colors">
+                        <i class="fa-solid fa-graduation-cap text-8xl"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-teal-500/10 text-teal-400 border border-teal-500/30 text-xs font-mono mb-4">
+                            <i class="fa-solid fa-graduation-cap"></i> Tertiary Education
+                        </div>
+                        <h4 class="text-2xl font-bold text-white mb-1">Diploma in Land Surveying</h4>
+                        <div class="text-teal-400 font-semibold mb-4 text-base">Regional Centre for Mapping of Resources for Development (RCMRD)</div>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Rigorous academic and practical training in Cadastral Surveying, Geodesy, Photogrammetry, Cartography, Hydrography, and Control Networks using modern GNSS & Total Station equipment.
+                        </p>
+                        <div class="flex items-center gap-4 text-xs font-mono text-slate-400 border-t border-slate-800 pt-4">
+                            <span><i class="fa-solid fa-compass text-teal-400 mr-1"></i> Geodetic Surveying</span>
+                            <span><i class="fa-solid fa-layer-group text-teal-400 mr-1"></i> Spatial Mapping</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Contact Form Section -->
+    <section id="contact" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-xs font-mono font-semibold">
+                        <i class="fa-solid fa-headset mr-1"></i> Let's Connect
+                    </span>
+                    <h3 class="text-3xl md:text-4xl font-extrabold text-white">Have a Surveying or UAV Aerial Mapping Project?</h3>
+                    <p class="text-slate-300 text-base leading-relaxed">
+                        I am available for land surveying consultations, drone photogrammetry assignments, corridor mapping, and customized spatial data processing across Kenya and East Africa.
+                    </p>
+
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-center gap-4 p-4 rounded-xl bg-techNavy-900/80 border border-slate-800">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400 font-mono">Direct Email</div>
+                                <a href="mailto:ernestmugo.macharia@gmail.com" class="text-sm font-semibold text-white hover:text-emerald-400 transition-colors">ernestmugo.macharia@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-4 rounded-xl bg-techNavy-900/80 border border-slate-800">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400 font-mono">Phone / WhatsApp</div>
+                                <div class="text-sm font-semibold text-white">+254 759676465</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-4 rounded-xl bg-techNavy-900/80 border border-slate-800">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400 font-mono">Primary Location</div>
+                                <div class="text-sm font-semibold text-white">Lamu, Nairobi / Across Kenya</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form Box -->
+                <div class="lg:col-span-7 glass-panel p-8 rounded-3xl border border-emerald-500/30 relative">
+                    <h4 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-paper-plane text-emerald-400"></i> Send a Direct Message
+                    </h4>
+
+                    <!-- Alert message container -->
+                    <div id="contactAlert" class="hidden mb-6 p-4 rounded-xl text-xs font-mono"></div>
+
+                    <form id="portfolioContactForm" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-mono text-slate-300 mb-1">Your Full Name *</label>
+                                <input type="text" required id="senderName" placeholder="e.g. Eng. Daniel Mark" class="w-full bg-techNavy-950 border border-slate-700 focus:border-emerald-400 rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-mono text-slate-300 mb-1">Your Email Address *</label>
+                                <input type="email" required id="senderEmail" placeholder="e.g. daniel@construction.co.ke" class="w-full bg-techNavy-950 border border-slate-700 focus:border-emerald-400 rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition-colors">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-mono text-slate-300 mb-1">Service Required</label>
+                                <select id="serviceType" class="w-full bg-techNavy-950 border border-slate-700 focus:border-emerald-400 rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition-colors">
+                                    <option value="Drone Mapping">Drone Mapping & Photogrammetry</option>
+                                    <option value="Topographical Survey">Topographical / Alignment Survey</option>
+                                    <option value="Boundary Beaconing">Boundary Demarcation & Riparian</option>
+                                    <option value="GIS & Python Automation">GIS Data & Python Processing</option>
+                                    <option value="General Consultation">General Surveying Consultation</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-mono text-slate-300 mb-1">Project Location</label>
+                                <input type="text" id="projectLoc" placeholder="e.g. Nakuru / Naivasha" class="w-full bg-techNavy-950 border border-slate-700 focus:border-emerald-400 rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition-colors">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-mono text-slate-300 mb-1">Project Brief / Message *</label>
+                            <textarea required id="senderMessage" rows="4" placeholder="Describe the site area, scope, or desired outputs (e.g., Contour maps, Orthomosaic, CAD files)..." class="w-full bg-techNavy-950 border border-slate-700 focus:border-emerald-400 rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition-colors"></textarea>
+                        </div>
+
+                        <button type="submit" id="submitBtn" class="w-full py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-techNavy-950 font-bold text-sm hover:shadow-lg hover:shadow-emerald-500/25 transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i> Send Inquiry Message
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-techNavy-950 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-emerald-500 text-techNavy-950 flex items-center justify-center font-bold text-sm">
+                    EM
+                </div>
+                <span class="text-sm font-semibold text-slate-300">Ernest Mugo Macharia &copy; 2026. All rights reserved.</span>
+            </div>
+            <div class="text-xs text-slate-400 font-mono">
+                Land Surveyor & RPL Certified Drone Pilot
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Project Modal -->
+    <div id="projectModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="glass-panel bg-techNavy-900 max-w-2xl w-full rounded-2xl p-6 border border-emerald-500/30 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeProjectModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modalContent">
+                <!-- Dynamically Populated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Printable/Viewable Resume Modal -->
+    <div id="resumeModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-slate-900 max-w-3xl w-full rounded-2xl p-8 border border-emerald-500/30 relative max-h-[90vh] overflow-y-auto text-slate-100">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-800 mb-6">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-file-pdf text-emerald-400 text-2xl"></i>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Curriculum Vitae Preview</h3>
+                        <p class="text-xs text-slate-400 font-mono">Ernest Mugo Macharia</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="window.print()" class="px-3 py-1.5 rounded bg-emerald-500 text-techNavy-950 font-bold text-xs flex items-center gap-1">
+                        <i class="fa-solid fa-print"></i> Print / Save PDF
+                    </button>
+                    <button onclick="closeResumeModal()" class="text-slate-400 hover:text-white text-xl ml-2">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Resume Content -->
+            <div class="space-y-6 text-sm text-slate-300">
+                <div class="border-b border-slate-800 pb-4">
+                    <h2 class="text-2xl font-bold text-white uppercase tracking-wider">Ernest Mugo Macharia</h2>
+                    <p class="text-emerald-400 font-mono text-sm">Land Surveyor & RPL Certified Drone Pilot</p>
+                    <p class="text-xs text-slate-400 mt-1">Location: Kenya | Email: ernestmugo95@gmail.com</p>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider mb-2">Professional Summary</h4>
+                    <p class="text-xs leading-relaxed">
+                        Versatile Land Surveyor and RPL certified drone pilot with extensive field experience conducting RTK GNSS baselines, topographic surveys, and high-resolution aerial photogrammetry mapping. Skilled in leveraging Python for automated coordinate conversion and dataset cleaning between field tools and CAD systems.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider mb-2">Qualifications & Education</h4>
+                    <ul class="list-disc list-inside text-xs space-y-1">
+                        <li><strong>Remote Pilot License (RPL):</strong> Drone Space Kenya (KCAA Approved)</li>
+                        <li><strong>Certificate in GIS Data Quality and Geographic Positioning System:</strong> Alison</li>
+                        <li><strong>Diploma in Land Surveying:</strong> Regional Centre for Mapping of Resources for Development (RCMRD)</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider mb-2">Technical Capabilities</h4>
+                    <div class="grid grid-cols-2 gap-2 text-xs">
+                        <div>• RTK GNSS (CHCNAV i73/i83, FOIF)</div>
+                        <div>• FOIF RTS Total Stations</div>
+                        <div>• AutoCAD Civil 3D & ArcGIS Pro</div>
+                        <div>• CHCNAV CoPre Photogrammetry</div>
+                        <div>• Python Coordinate Automation</div>
+                        <div>• SurPad & Field Software</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider mb-2">Key Experience Highlights</h4>
+                    <div class="space-y-2 text-xs">
+                        <div>
+                            <strong>Pipeline & Road Corridor Topographic Mapping:</strong> Executed aerial surveys and RTK control points for engineering design.
+                        </div>
+                        <div>
+                            <strong>Boundary & Riparian Demarcation:</strong> Precision High-Water Mark reserve beaconing and parcel boundary re-establishment.
+                        </div>
+                        <div>
+                            <strong>Spatial Scripting:</strong> Custom Python scripts for transformation of GPS logs to Civil 3D format.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Dark / Light Theme Toggle Functionality
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('themeIcon');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+
+        // Mobile Nav Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Project Filtering Logic
+        function filterProjects(category) {
+            const cards = document.querySelectorAll('.project-card');
+            const buttons = document.querySelectorAll('.project-filter-btn');
+
+            buttons.forEach(btn => {
+                if (btn.getAttribute('data-filter') === category) {
+                    btn.classList.remove('bg-slate-800', 'text-slate-300');
+                    btn.classList.add('bg-emerald-500', 'text-techNavy-950');
+                } else {
+                    btn.classList.remove('bg-emerald-500', 'text-techNavy-950');
+                    btn.classList.add('bg-slate-800', 'text-slate-300');
+                }
+            });
+
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Simulated Python Script Execution for Sandbox
+        function runCoordinateProcessing() {
+            const id = document.getElementById('demoPtId').value || 'PT-01';
+            const lat = parseFloat(document.getElementById('demoLat').value) || -1.286389;
+            const lon = parseFloat(document.getElementById('demoLon').value) || 36.817222;
+            const elev = parseFloat(document.getElementById('demoElev').value) || 1680.0;
+
+            const terminal = document.getElementById('terminalOutput');
+            
+            // Simple UTM Zone 37S Approximation logic for interactive demo
+            const falseEasting = 257000 + ((lon - 36.0) * 111320 * Math.cos(lat * Math.PI / 180));
+            const falseNorthing = 10000000 + (lat * 110574);
+
+            terminal.innerHTML = `
+<div class="text-slate-400">[Executing Python Script: survey_coords_parser.py ...]</div>
+<div class="text-emerald-300">[1/2] Parsing raw WGS84: Lat ${lat.toFixed(6)}°, Lon ${lon.toFixed(6)}°</div>
+<div class="text-emerald-300">[2/2] Transformed to EPSG:32737 (UTM Zone 37S)</div>
+<div class="text-yellow-400 font-bold mt-2">--- Civil 3D Point Format Output (P,E,N,Z,D) ---</div>
+<div class="text-white bg-slate-900 p-2 rounded mt-1 select-all font-mono">
+${id}, ${falseEasting.toFixed(3)}, ${falseNorthing.toFixed(3)}, ${elev.toFixed(3)}, RTK_FIXED
+</div>
+<div class="text-slate-400 text-[10px] mt-1">✓ Status: 0 errors detected. Ready to export to .CSV</div>
+            `;
+        }
+
+        // Contact Form Handlers
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            const alertBox = document.getElementById('contactAlert');
+            const name = document.getElementById('senderName').value;
+            const service = document.getElementById('serviceType').value;
+
+            alertBox.className = "mb-6 p-4 rounded-xl text-xs font-mono bg-emerald-500/20 text-emerald-300 border border-emerald-500/40";
+            alertBox.innerHTML = `<i class="fa-solid fa-circle-check text-sm mr-2"></i> Thank you ${name}! Your inquiry regarding <strong>${service}</strong> has been logged. Ernest will respond shortly.`;
+            alertBox.classList.remove('hidden');
+
+            document.getElementById('portfolioContactForm').reset();
+            setTimeout(() => {
+                alertBox.classList.add('hidden');
+            }, 8000);
+        }
+
+        // Modal Handlers
+        const projectDetails = {
+            pipeline: {
+                title: "Pipeline & Road Corridor Topographical Survey",
+                badge: "UAV Photogrammetry & GNSS",
+                description: "This project required a comprehensive corridor topography map for infrastructure planning. I established a robust RTK GNSS baseline network, deployed the CHCNAV X500 UAV for high-resolution photogrammetry imagery, and processed GCPs using CHCNAV CoPre.",
+                specs: [
+                    "Area/Length: Over 100km Linear Corridor",
+                    "Equipment: CHCNAV x500, CHCNAV i83 RTK GNSS Receiver",
+                    "Software: AutoCAD Civil 3D, CHCNAV CoPre, SurPad",
+                    "Deliverables: Contour maps (0.5m interval), Orthomosaic, DEM, Cross-section alignments"
+                ]
+            },
+            boundary: {
+                title: "Boundary Demarcation & Riparian Reserve Beaconing",
+                badge: "Cadastral Surveying",
+                description: "Executing statutory boundary delineation along riverine ecosystems requiring careful interpretation of high-water mark buffer regulations and cadastral deed plans eg. marking the Lake Kenyatta boundary.",
+                specs: [
+                    "Equipment: FOIF RTS Total Station, RTK Base/Rover",
+                    "Software: ArcGIS Pro, SurPad 4.2",
+                    "Deliverables: Survey Plans, Permanent Concrete Beaconing, Legal Riparian Map"
+                ]
+            },
+            automation: {
+                title: "Automated Spatial Data & Coordinate Processing Engine",
+                badge: "Python & GIS Scripting",
+                description: "Built tailored Python routines to take raw exported ASCII/CSV logs from GNSS handheld field controllers (SurPad) and strip header redundancies, validate satellite DOP thresholds, and reformat coordinates into CAD-ready syntax.",
+                specs: [
+                    "Language: Python 3 (Pandas, GeoPandas, Math Library)",
+                    "Efficiency: Reduced manual data formatting time by 80%",
+                    "Features: CRS conversion, outlier error flagging, CSV auto-export"
+                ]
+            },
+            community: {
+                title: "Community Land Registration & Survey Field Preplanning",
+                badge: "Community Tenure & Reconnaissance",
+                description: "Coordinated ground reconnaissance, stakeholder consensus verification, and field mapping operations for communal land tenure documentation.",
+                specs: [
+                    "Tools: QGIS, RTK Rover, Field Maps",
+                    "Focus: Boundary consensus, parcel identification, registry plotting"
+                ]
+            }
+        };
+
+        function openProjectModal(type) {
+            const data = projectDetails[type];
+            if (!data) return;
+
+            const content = document.getElementById('modalContent');
+            content.innerHTML = `
+                <span class="px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-xs font-mono mb-3 inline-block">${data.badge}</span>
+                <h3 class="text-2xl font-bold text-white mb-3">${data.title}</h3>
+                <p class="text-slate-300 text-sm leading-relaxed mb-6">${data.description}</p>
+                <div class="bg-techNavy-950 p-4 rounded-xl border border-slate-800 mb-6">
+                    <h4 class="text-xs font-mono text-emerald-400 font-bold uppercase mb-2">Technical Specifications:</h4>
+                    <ul class="space-y-1 text-xs text-slate-300 font-mono">
+                        ${data.specs.map(item => `<li>• ${item}</li>`).join('')}
+                    </ul>
+                </div>
+                <button onclick="closeProjectModal()" class="w-full py-2.5 rounded-xl bg-slate-800 text-white hover:bg-slate-700 text-xs font-bold font-mono">Close View</button>
+            `;
+            document.getElementById('projectModal').classList.remove('hidden');
+        }
+
+        function closeProjectModal() {
+            document.getElementById('projectModal').classList.add('hidden');
+        }
+
+        function openResumeModal() {
+            document.getElementById('resumeModal').classList.remove('hidden');
+        }
+
+        function closeResumeModal() {
+            document.getElementById('resumeModal').classList.add('hidden');
+        }
+
+        // Initialize default sandbox execution on page load
+        window.onload = function() {
+            runCoordinateProcessing();
+        };
+    </script>
+</body>
+</html>
